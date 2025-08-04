@@ -19,7 +19,7 @@
             <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">Beeda</a>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="#access" class="nav-link">Request Access</a>
+                <a href="#" class="nav-link" onclick="openModal('invitationModal'); return false;">Request Access</a>
             </div>
         </div>
     </nav>
@@ -153,7 +153,7 @@
                     <h3 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--primary-black); margin-bottom: 1rem;">Still have questions?</h3>
                     <p style="color: var(--medium-gray); font-size: 1.125rem; margin-bottom: 2rem; line-height: 1.6;">Our team is here to help you understand how Beeda can accelerate your journey.</p>
                     <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                        <button class="btn btn-luxury-green btn-large" style="background: linear-gradient(135deg, #D4AF37, #B8860B); box-shadow: var(--shadow-xl), 0 8px 30px rgba(212, 175, 55, 0.4);">
+                        <button class="btn btn-luxury-green btn-large" onclick="openModal('invitationModal')" style="background: linear-gradient(135deg, #D4AF37, #B8860B); box-shadow: var(--shadow-xl), 0 8px 30px rgba(212, 175, 55, 0.4);">
                             Request Invitation
                         </button>
                         <button class="btn btn-secondary btn-large">
@@ -186,6 +186,184 @@
         </div>
     </footer>
 
+    <!-- Modal Forms -->
+    <!-- Request Invitation Modal -->
+    <div id="invitationModal" class="modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px);">
+        <div class="modal-content" style="background: var(--pearl-white); margin: 2% auto; padding: 3rem; border-radius: 24px; width: 95%; max-width: 600px; position: relative; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); max-height: 90vh; overflow-y: auto;">
+            <span class="close" onclick="closeModal('invitationModal')" style="position: absolute; right: 1.5rem; top: 1.5rem; font-size: 2rem; font-weight: bold; cursor: pointer; color: var(--medium-gray);">&times;</span>
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--primary-black); margin-bottom: 0.5rem; text-align: center;">Request Invitation</h2>
+            <p style="text-align: center; color: var(--medium-gray); margin-bottom: 2rem; font-size: 0.9rem;">The private network for founders building $100B+ companies. Priority is given to applicants who are referred by an existing Beeda member.</p>
+            <form action="https://formspree.io/f/meozlyak" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <input type="hidden" name="form_type" value="invitation_request">
+                
+                <div>
+                    <label for="invitation-name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Full Name *</label>
+                    <input type="text" id="invitation-name" name="name" required style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);" placeholder="Enter your full name">
+                </div>
+                
+                <div>
+                    <label for="invitation-company" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Company *</label>
+                    <input type="text" id="invitation-company" name="company" required style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);" placeholder="Your company name">
+                </div>
+                
+                <div>
+                    <label for="invitation-email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Email *</label>
+                    <input type="email" id="invitation-email" name="email" required style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);" placeholder="Enter your email address">
+                </div>
+                
+                <div>
+                    <label for="invitation-phone" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Phone</label>
+                    <input type="tel" id="invitation-phone" name="phone" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);" placeholder="Enter your phone number">
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Founder, Investor, or Other? *</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="role_type[]" value="Founder" style="width: 1rem; height: 1rem;">
+                            <span>Founder</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="role_type[]" value="Investor" style="width: 1rem; height: 1rem;">
+                            <span>Investor</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="role_type[]" value="Executive Team" style="width: 1rem; height: 1rem;">
+                            <span>Executive Team</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="role_type[]" value="Service Provider" style="width: 1rem; height: 1rem;">
+                            <span>Service Provider</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="role_type[]" value="Other" style="width: 1rem; height: 1rem;">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="invitation-revenue" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Current Annual Revenue?</label>
+                    <select id="invitation-revenue" name="annual_revenue" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);">
+                        <option value="">Select revenue range</option>
+                        <option value="Pre-revenue">Pre-revenue</option>
+                        <option value="$1M-$5M">$1M - $5M</option>
+                        <option value="$5M-$10M">$5M - $10M</option>
+                        <option value="$10M-$25M">$10M - $25M</option>
+                        <option value="$25M-$50M">$25M - $50M</option>
+                        <option value="$50M-$100M">$50M - $100M</option>
+                        <option value="$100M+">$100M+</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="invitation-funding" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Total Funding?</label>
+                    <select id="invitation-funding" name="total_funding" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);">
+                        <option value="">Select funding range</option>
+                        <option value="Pre-revenue">Pre-revenue</option>
+                        <option value="$1M-$5M">$1M - $5M</option>
+                        <option value="$5M-$10M">$5M - $10M</option>
+                        <option value="$10M-$25M">$10M - $25M</option>
+                        <option value="$25M-$50M">$25M - $50M</option>
+                        <option value="$50M-$100M">$50M - $100M</option>
+                        <option value="$100M+">$100M+</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="invitation-investors" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Notable Investors / Angels?</label>
+                    <textarea id="invitation-investors" name="notable_investors" rows="3" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base); resize: vertical;" placeholder="List any notable investors, angels, or VCs backing your company"></textarea>
+                </div>
+                
+                <div>
+                    <label for="invitation-stage" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Stage of Company?</label>
+                    <select id="invitation-stage" name="company_stage" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);">
+                        <option value="">Select company stage</option>
+                        <option value="Pre-Seed">Pre-Seed</option>
+                        <option value="Seed">Seed</option>
+                        <option value="Series A">Series A</option>
+                        <option value="Series B">Series B</option>
+                        <option value="Series C">Series C</option>
+                        <option value="Series D+">Series D+</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="invitation-employees" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Number of Employees?</label>
+                    <select id="invitation-employees" name="employee_count" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);">
+                        <option value="">Select employee count</option>
+                        <option value="1-5">1-5</option>
+                        <option value="5-10">5-10</option>
+                        <option value="10-25">10-25</option>
+                        <option value="25-50">25-50</option>
+                        <option value="50-100">50-100</option>
+                        <option value="100-250+">100-250+</option>
+                    </select>
+                </div>
+                
+                <div id="investor-section" style="display: none;">
+                    <label for="invitation-check-size" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">If Investor, Typical Check Size? (Select up to 2)</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="check_size[]" value="$50K-$100K" style="width: 1rem; height: 1rem;">
+                            <span>$50K-$100K</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="check_size[]" value="$100K-$500K" style="width: 1rem; height: 1rem;">
+                            <span>$100K-$500K</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="check_size[]" value="$500K-$1M" style="width: 1rem; height: 1rem;">
+                            <span>$500K-$1M</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="check_size[]" value="$1M-$5M" style="width: 1rem; height: 1rem;">
+                            <span>$1M-$5M</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="check_size[]" value="$5M-$10M" style="width: 1rem; height: 1rem;">
+                            <span>$5M-$10M</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" name="check_size[]" value="$10M+" style="width: 1rem; height: 1rem;">
+                            <span>$10M+</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-luxury-green btn-large" style="margin-top: 1rem;">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Request Referral Modal -->
+    <div id="referralModal" class="modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px);">
+        <div class="modal-content" style="background: var(--pearl-white); margin: 5% auto; padding: 3rem; border-radius: 24px; width: 90%; max-width: 500px; position: relative; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);">
+            <span class="close" onclick="closeModal('referralModal')" style="position: absolute; right: 1.5rem; top: 1.5rem; font-size: 2rem; font-weight: bold; cursor: pointer; color: var(--medium-gray);">&times;</span>
+            <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--primary-black); margin-bottom: 1.5rem; text-align: center;">Request a Referral</h2>
+            <form action="https://formspree.io/f/meozlyak" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <input type="hidden" name="form_type" value="referral_request">
+                <div>
+                    <label for="referral-name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Full Name *</label>
+                    <input type="text" id="referral-name" name="name" required style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);" placeholder="Enter your full name">
+                </div>
+                <div>
+                    <label for="referral-email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Email Address *</label>
+                    <input type="email" id="referral-email" name="email" required style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);" placeholder="Enter your email address">
+                </div>
+                <div>
+                    <label for="referral-referrer" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Referrer Name</label>
+                    <input type="text" id="referral-referrer" name="referrer" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base);" placeholder="Name of the member referring you">
+                </div>
+                <div>
+                    <label for="referral-message" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-black);">Tell us about yourself *</label>
+                    <textarea id="referral-message" name="message" required rows="4" style="width: 100%; padding: 1rem; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 1rem; transition: var(--transition-base); resize: vertical;" placeholder="Share your background, achievements, and why you'd like to join Beeda"></textarea>
+                </div>
+                <button type="submit" class="btn btn-luxury-green btn-large" style="margin-top: 1rem;">Submit Referral Request</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Navbar always solid on FAQ page (no transparency)
         const navbar = document.querySelector('.navbar');
@@ -196,6 +374,57 @@
         window.addEventListener('scroll', function() {
             // Always keep navbar solid on FAQ page
             navbar.classList.add('scrolled');
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show/hide investor section based on role selection
+            const roleCheckboxes = document.querySelectorAll('input[name="role_type[]"]');
+            const investorSection = document.getElementById('investor-section');
+            
+            function toggleInvestorSection() {
+                const isInvestor = Array.from(roleCheckboxes).some(checkbox => 
+                    checkbox.value === 'Investor' && checkbox.checked
+                );
+                investorSection.style.display = isInvestor ? 'block' : 'none';
+            }
+            
+            roleCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', toggleInvestorSection);
+            });
+
+            // Limit check size selections to 2
+            const checkSizeCheckboxes = document.querySelectorAll('input[name="check_size[]"]');
+            checkSizeCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const checkedBoxes = Array.from(checkSizeCheckboxes).filter(cb => cb.checked);
+                    if (checkedBoxes.length > 2) {
+                        this.checked = false;
+                    }
+                });
+            });
         });
 
         // FAQ hover effects
