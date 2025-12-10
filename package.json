@@ -4,7 +4,7 @@
   "description": "Beeda - Luxury Network for Visionaries",
   "main": "index.html",
   "scripts": {
-    "dev": "python3 -m http.server 3000",
+    "dev": "live-server --port=3000 --open=/index.html",
     "start": "python3 -m http.server 3000",
     "serve": "npx serve . -p 3000"
   },
@@ -12,6 +12,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "live-server": "^1.2.2",
     "serve": "^14.2.1"
   }
 } 
